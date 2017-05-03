@@ -11,5 +11,10 @@ public class Player {
     }
 
     //Points for game
-    private int points { get; set; }
+    public int points { get; set; }
+
+    public void score()
+    {
+        points++;
+    }
 }

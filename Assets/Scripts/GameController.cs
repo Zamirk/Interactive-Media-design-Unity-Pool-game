@@ -27,6 +27,15 @@ public class GameController : MonoBehaviour {
         GameInstance = this;
     }
 
+    public void PlayerOneScore()
+    {
+        PlayerOne.score();
+    }
+    public void PlayerTwoScore()
+    {
+        PlayerTwo.score();
+    }
+
     void Update()
     {
         currentState.Update();
