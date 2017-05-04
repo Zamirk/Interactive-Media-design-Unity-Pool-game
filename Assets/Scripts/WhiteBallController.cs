@@ -6,11 +6,12 @@ public class WhiteBallController : MonoBehaviour {
 
     public float speed;
     public Rigidbody rb;
-
+    Vector3 aaa = new Vector3();
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        aaa = rb.transform.position;
     }
 
     // Update is called once per frame
@@ -19,11 +20,11 @@ public class WhiteBallController : MonoBehaviour {
 
     }
 
+    //Reseting white ball position if it goes off screen
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pick Up"))
-        {
-            other.gameObject.SetActive(false);
-        }
+        rb.position = aaa;
+        rb.angularVelocity = new Vector3(0,0,0);
+
     }
 }

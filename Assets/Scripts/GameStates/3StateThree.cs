@@ -11,7 +11,7 @@ namespace GameStates {
                 breakIt = false;
             } else
             {
-                force = 50f * (distance2 + 1f) + gameController.minForce;
+                force = 25f * (distance2 + 1f) + gameController.minForce;
             }
         }
 

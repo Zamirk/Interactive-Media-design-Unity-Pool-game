@@ -12,6 +12,6 @@ public class BallScript2 : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         rb.gameObject.SetActive(false);
-        //GameController.GameInstance.PlayerTwo.score();
+        GameController.GameInstance.PlayerTwo.score();
     }
 }
