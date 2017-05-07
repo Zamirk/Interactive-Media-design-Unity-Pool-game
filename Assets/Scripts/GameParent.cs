@@ -2,6 +2,7 @@ using GameStates;
 using UnityEngine;
 
 public abstract class GameParent : IState {
+    static public GameParent Game { get; set; }
 
     //Game states
     enum States { a, b, c, d }
@@ -9,22 +10,22 @@ public abstract class GameParent : IState {
     static States MyStates;
     protected MonoBehaviour parent;
     protected GameController gameController;
-    protected GameObject cueStick;
-    protected GameObject cueBall;
+    public static GameObject cueStick;
+    public static GameObject win;
+    protected static GameObject cueBall;
     protected Rigidbody whiteBallRB;
     public static bool breakIt = true;
 
-    protected float cueDirection = -1;
+    protected static float cueDirection = -1;
     protected float speed = 7;
     protected float speed2 = 30f;
     protected float force = 0f;
 
-    protected Vector3 cuePosition;
-    protected Quaternion cueRotation;
+    public static Vector3 cuePosition;
+    protected static Quaternion cueRotation;
 
     public GameParent(MonoBehaviour parent) {
 		this.parent = parent;
-
         //Setting the assets
         gameController = (GameController)parent;
         cueBall = gameController.cueBall;
@@ -67,9 +68,17 @@ public abstract class GameParent : IState {
         cueStick.transform.rotation = cueRotation;
         //cueStick.transform.position.Set(
         //cueStick.transform.position.x + 0.145f,
-         //   cueStick.transform.position.y + 1f,
-         //   cueStick.transform.position.z + 1.15f);
-
+        //   cueStick.transform.position.y + 1f,
+        //   cueStick.transform.position.z + 1.15f);
+    }
+    public static void UpdateCue()
+    {
+        cueStick.transform.position = cueBall.transform.position - cuePosition;
+        cueStick.transform.rotation = cueRotation;
+        //cueStick.transform.position.Set(
+        //cueStick.transform.position.x + 0.145f,
+        //   cueStick.transform.position.y + 1f,
+        //   cueStick.transform.position.z + 1.15f);
     }
     //Update methods
     public virtual void Update() { }

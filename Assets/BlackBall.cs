@@ -33,6 +33,6 @@ public class BlackBall : MonoBehaviour {
         //{
         //Score.ScoreInstance.instruction.text = "Game over";
         // }
-
+        rb.velocity = new Vector3(0, 0, 0);
     }
 }
